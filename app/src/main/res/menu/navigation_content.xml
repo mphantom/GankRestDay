@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/gankDay"
+            android:icon="@drawable/ic_assignment_indigo_a400_18dp"
+            android:title="@string/gankday" />
+        <item
+            android:id="@+id/history"
+            android:icon="@drawable/ic_assignment_indigo_a400_18dp"
+            android:title="@string/history" />
+    </group>
+</menu>

@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'realm-android'
+buildscript {
+    ext.kotlin_version = '1.0.0'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+}
+repositories {
+    mavenCentral()
+}
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.mphantom.forrest"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+        }
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+ext {
+    anko = '0.8.2+'
+    retrofitSupportLibVersion = '2.0.0'
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:design:23.2.1'
+    compile 'com.android.support:recyclerview-v7:23.2.1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.anko:anko-common:$anko"
+    compile "org.jetbrains.anko:anko-sdk15:$anko"
+    compile "org.jetbrains.anko:anko-support-v4:$anko"
+    compile "com.squareup.retrofit2:retrofit:${retrofitSupportLibVersion}"
+    compile "com.squareup.retrofit2:converter-gson:${retrofitSupportLibVersion}"
+    compile "com.squareup.retrofit2:adapter-rxjava:${retrofitSupportLibVersion}"
+    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
+//    compile "org.jetbrains.anko:anko-percent:$anko"
+//    compile "org.jetbrains.anko:anko-design:$anko"
+//    compile "org.jetbrains.anko:anko-appcompat-v7:$anko"
+//    compile "org.jetbrains.anko:anko-cardview-v7:$anko"
+//    compile "org.jetbrains.anko:anko-recyclerview-v7:$anko"
+//    compile "org.jetbrains.anko:anko-gridlayout-v7:$anko"
+}
+
